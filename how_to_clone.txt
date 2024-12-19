@@ -1,0 +1,70 @@
+Lage repo på github web interface
+- Legg til navn 
+- Endre tilgang til Private
+
+Endre default branch
+- Gå til settings 
+- Trykk på de to pilene som sier "Switch to another branch" under default branch
+
+Endre til at alle bare har skrivetilgang på BitBucket
+
+
+
+
+
+
+Sjekkliste
+- Tilgang på bitbucket repo
+- Commits er like
+- Brancher er med
+-- Default branch
+-- Tags
+
+- Github repo er privat
+- BitBucket prosjekt tilgang
+- Descriprion?
+- Se på om noen har main navn
+
+
+
+
+Github have a file limit of 100MB before git LFS is required. Under moving from bitbucket this is fixed by removing the large file and adding it later again.
+
+find . -type f -size +100M
+
+# git log --oneline --reverse refs/heads/BRANCH-NAME | awk 'NR % 1000 == 0'
+# git push REMOTE-NAME <YOUR_COMMIT_SHA_NUMBER>:refs/heads/BRANCH-NAME
+# git push origin b81e7732ce86eb4b2a7804e1210007f8fcbdb7dd:refs/heads/imx_5.4.70_2.3.0_millenium_falcon
+
+
+git fetch --tags
+git lfs track "LabVIEW/Builds/PerForM\ II/PerForM\ II\ Installer/Volume.zip"
+git add  .
+git commit -m "Start tracking large file with Git LFS, This is nesesary when moving the repo from bitbucket to github. Nothing else should be changed"
+git add --renormalize .
+git lfs migrate import --everything --include=\"LabVIEW/Builds/PerForM\ II/PerForM\ II\ Installer/Volume.zip\"
+git add --renormalize .
+git push
+git push --tags
+
+
+git checkout magne
+git push -u origin magne
+git checkout master
+git push -u origin master
+git checkout mhs/add_readme
+git push -u origin mhs/add_readme
+git checkout mhs/psu_d2xx
+git push -u origin mhs/psu_d2xx
+git checkout mhs_fix_fat_faults
+git push -u origin mhs_fix_fat_faults
+git checkout msk/hovik-lab-setup
+git push -u origin msk/hovik-lab-setup
+git checkout msk/offshore-changes-spring-2022
+git push -u origin msk/offshore-changes-spring-2022
+git checkout mw/add-health-data
+git push -u origin mw/add-health-data
+git checkout mw/add-start-stop-sampling
+git push -u origin mw/add-start-stop-sampling
+git checkout mw/test-data-acquirer
+git push -u origin mw/test-data-acquirer
